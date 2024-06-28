@@ -13,7 +13,7 @@
  
 
 
-### First part. Problem setup
+### First part. Hamiltonian setup
  We know how to solve the Schrodinger equation in 1D. The problem now is to extend it to 2D. Lets first look at the eigenvectors $ψ$. 
  In 1 dimension $ψ$ looks like this: 
  
@@ -44,21 +44,34 @@ Here you can see that it is a column vector $N^2$ long. So it will have to be co
 
 Now the next part is to deal with the 2D Laplacian. We saw the 1D case with the tridiagonal matrix. The matrix will look similar 
 here except now we can set $\hbar$ = $1$ and write units in terms of $m\Delta x^2$. This will make constructing our laplacian look 
-a lot cleaner. When it comes to multi-dimensional Laplacians we use the Kroncker sum of discrete laplacians. Let's define matrix D as 
+a lot cleaner. When it comes to multi-dimensional Laplacians we use the Kroncker sum of discrete laplacians. Let's define $N$ x $N$ matrix D as 
 
 ```math
 \begin{equation}
 D =
 \begin{pmatrix}
-  -2       & 1   & 0 & \cdots  & 0  \\
-   1       & -2   & 1 & \cdots  & \vdots  \\
-  \vdots  & \vdots  & \vdots  & \ddots  & \vdots \\
-  ψ_{N1}       & ψ_{N2}   & \cdots  & ψ_{NN} \\
+  -2       & 1   & 0 & \cdots  & \cdots & 0  \\
+   1       & -2   & 1 & \cdots & \cdots & \vdots  \\
+   0  & 1  & -2  & 1  & \cdots & \vdots \\
+   \vdots       & \vdots   & \vdots  & \ddots & \cdots & 0 \\
+   \vdots  & \vdots & \vdots & \ddots & \cdots & 1\\
+   0 & \cdots & \cdots & 0 & 1 & -2 \\
 \end{pmatrix}
-\end{equation}
+\end{equation} 
 ```
+Here we can see that the off diagonals contain 1 and the main diagonal contains -2. This comes from the 3 point approximation 
+for the derivative. 
 
+The Kroncker Sum of discrete Laplacians in 2D is $L = D_{xx} ⊕ D_{yy}$
 
+This is computed using the Kronecker product(although SciPy performs the calculations for us): 
+
+$D_{xx} ⊕ D_{yy} = D_{xx}⊗I + I⊗D_{yy}$ where $I$ is the identity matrix. 
+
+This results in an $N^2$ x $N^2$ matrix and represents the kinetic energy operator. 
+
+Recall that the potential energy was a matrix with only entries on the diagonal and 0s everywhere else. 
+It will be the same here except there will be $N^2$ entries because we are in 2D. 
 
  ### Second part. Harmonic Oscillator 
  The next part does the same thing but with the quantum harmonic oscillator where $V(x) = \frac{ℏ^2 x^2}{2m}$. This is also a well understood problem with 
