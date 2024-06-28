@@ -20,6 +20,19 @@
  ```math
 ψ = \begin{bmatrix}ψ_{1}\\ψ_{2}\\ \vdots\\ψ_{N - 1} \end{bmatrix}
 ```
+
+In 2D it feels natural to turn $ψ$ into a 2D grid. 
+```math
+\begin{equation}
+ψ =
+\begin{pmatrix}
+  ψ_{11}       & ψ_{12}   & \cdots  & ψ_{1N}  \\
+  ψ_{21}       & ψ_{22}   & \cdots  & ψ_{2N}  \\
+  \vdots  & \vdots  & \vdots  & \ddots  & \vdots \\
+  ψ_{N1}       & ψ_{N2}   & \cdots  & ψ_{NN} \\
+\end{pmatrix}
+\end{equation}
+``` 
  ### Second part. Harmonic Oscillator 
  The next part does the same thing but with the quantum harmonic oscillator where $V(x) = \frac{ℏ^2 x^2}{2m}$. This is also a well understood problem with 
  an analytical solution(granted it's a little harder). The eigenfunctions here should look like Gaussians. We can compare the eigenvalues to the analytical 
