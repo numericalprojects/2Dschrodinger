@@ -32,7 +32,8 @@ In 2D it feels natural to turn $ψ$ into a 2D grid.
   ψ_{N1}       & ψ_{N2}   & \cdots  & ψ_{NN} \\
 \end{pmatrix}
 \end{equation}
-``` 
+```
+However, 
  ### Second part. Harmonic Oscillator 
  The next part does the same thing but with the quantum harmonic oscillator where $V(x) = \frac{ℏ^2 x^2}{2m}$. This is also a well understood problem with 
  an analytical solution(granted it's a little harder). The eigenfunctions here should look like Gaussians. We can compare the eigenvalues to the analytical 
