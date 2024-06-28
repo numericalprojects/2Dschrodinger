@@ -42,6 +42,21 @@ When we run it through SciPy, it'll return the eigenvectors like this:
 ```
 Here you can see that it is a column vector $N^2$ long. So it will have to be converted into a 2D grid to visualize it later. 
 
+Now the next part is to deal with the 2D Laplacian. We saw the 1D case with the tridiagonal matrix. The matrix will look similar 
+here except now we can set $\hbar$ = $1$ and write units in terms of $m\Delta x^2$. This will make constructing our laplacian look 
+a lot cleaner. When it comes to multi-dimensional Laplacians we use the Kroncker sum of discrete laplacians. Let's define matrix D as 
+
+```math
+\begin{equation}
+D =
+\begin{pmatrix}
+  -2       & 1   & 0 & \cdots  & 0  \\
+   1       & -2   & 1 & \cdots  & \vdots  \\
+  \vdots  & \vdots  & \vdots  & \ddots  & \vdots \\
+  ψ_{N1}       & ψ_{N2}   & \cdots  & ψ_{NN} \\
+\end{pmatrix}
+\end{equation}
+```
 
 
 
