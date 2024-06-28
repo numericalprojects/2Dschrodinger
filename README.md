@@ -13,7 +13,7 @@
  
 
 
-### First part. Hamiltonian setup
+### Hamiltonian setup
  We know how to solve the Schrodinger equation in 1D. The problem now is to extend it to 2D. Lets first look at the eigenvectors $ψ$. 
  In 1 dimension $ψ$ looks like this: 
  
@@ -71,13 +71,25 @@ $D_{xx} ⊕ D_{yy} = D_{xx}⊗I + I⊗D_{yy}$ where $I$ is the identity matrix.
 This results in an $N^2$ x $N^2$ matrix and represents the kinetic energy operator. 
 
 Recall that the potential energy was a matrix with only entries on the diagonal and 0s everywhere else. 
-It will be the same here except there will be $N^2$ entries because we are in 2D. 
+It will be the same here except there will be $N^2$ entries because we are in 2D. Next we add it to the kinetic energy operator and we have our hamiltonian. 
 
- ### Second part. Harmonic Oscillator 
- The next part does the same thing but with the quantum harmonic oscillator where $V(x) = \frac{ℏ^2 x^2}{2m}$. This is also a well understood problem with 
- an analytical solution(granted it's a little harder). The eigenfunctions here should look like Gaussians. We can compare the eigenvalues to the analytical 
- expression: 
- $E_i = (i- \frac{1}{2})ℏ^2/m$. The program will do the same things as before. 
+The Schrodinger Equation then becomes this 
+$[\frac{-1}{2} D_{xx} ⊕ D_{yy} + m \Delta x^2]Ψ(x) =  m \Delta x^2 EΨ(x,y)$
+
+ ### Potential Energy Setup 
+ There are different potentials the user can run the program for. 
+ 
+ First is the Infinite Square Well or Particle in a box: $V = 0$ 
+ 
+ Next is the Harmonic Oscillator: $V(x, y) = \frac {1}{2} (x^2 + y^2)$ 
+
+ Next is the Hydrogen-like potential: $V(r) = \frac{-1}{r}$ 
+ where $r = \sqrt{x^2 + y^2}$. We will need to shift this by a small amount to 
+ avoid the divergence issue so really in the code we have $V(r) = \frac{-1}{r + ϵ}$ 
+
+
+ Next is the Gaussian-like potential: 
+ 
  
  ### Third part. Woods Saxon 
  The last part of this program is the Woods Saxon potential $V(x)= \frac{-V_0}{1 + exp((|x|-R)/a)}$. The program will do the same thing as the previous 2, 
