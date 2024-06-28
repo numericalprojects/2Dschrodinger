@@ -34,6 +34,17 @@ In 2D it feels natural to turn $ψ$ into a 2D grid.
 \end{equation}
 ```
 However, 
+
+When we run it through SciPy, it'll return the eigenvectors like this: 
+
+ ```math
+ψ = \begin{bmatrix}ψ_{11}\\\vdots \\ ψ_{1N}\\ψ_{21}\\\vdots\\ψ_{2N}\\\vdots\\ψ_{NN} \end{bmatrix}
+```
+Here you can see that it is a column vector $N^2$ long. So it will have to be converted into a 2D grid to visualize it later. 
+
+
+
+
  ### Second part. Harmonic Oscillator 
  The next part does the same thing but with the quantum harmonic oscillator where $V(x) = \frac{ℏ^2 x^2}{2m}$. This is also a well understood problem with 
  an analytical solution(granted it's a little harder). The eigenfunctions here should look like Gaussians. We can compare the eigenvalues to the analytical 
