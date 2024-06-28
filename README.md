@@ -16,6 +16,10 @@
 ### First part. Problem setup
  We know how to solve the Schrodinger equation in 1D. The problem now is to extend it to 2D. Lets first look at the eigenvectors $ψ$. 
  In 1 dimension $ψ$ looks like this: 
+ 
+ ```math
+ψ = \begin{bmatrix}ψ_{1}\\ψ_{2}\\ \vdots\\ψ_{N - 1} \end{bmatrix}
+```
  ### Second part. Harmonic Oscillator 
  The next part does the same thing but with the quantum harmonic oscillator where $V(x) = \frac{ℏ^2 x^2}{2m}$. This is also a well understood problem with 
  an analytical solution(granted it's a little harder). The eigenfunctions here should look like Gaussians. We can compare the eigenvalues to the analytical 
