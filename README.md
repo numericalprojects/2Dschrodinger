@@ -3,24 +3,19 @@
  The goal of this program is to find numerical solutions to the eigenvalue problem, the time-independent Schrodinger Equation. 
  We will work in 2 dimensions so the equation becomes: 
  $[\frac{-ℏ^2}{2m}\frac{d^2}{dx^2}\frac{d^2}{dy^2} + V(x,y)]Ψ(x,y) = EΨ(x,y)$ 
+
+ This program is meant to be a personal exercise to extend what was accomplished in the repository quantum-eigenvalues 
+ to 2 dimensions. 
  
- We want to solve this for different potentials V(x,y). The potentials will be infinite square well, harmonic oscillator, 
- a Gaussian-like potential and a hydrogen-like potential. We can compare analytically for infinite square well and the harmonic oscillator but 
- the Woods Saxon has no analytical solution and requires numerical methods. 
+ We want to solve this for different potentials $V(x,y)$. The potentials will be infinite square well, harmonic oscillator, 
+ a Gaussian-like potential and a hydrogen-like potential. The infinite square well has analytical solutions as well as the harmonic 
+ oscillator and even hydrogen in 3 dimensions but for a Gaussian-like potential we must use numerical solutions. 
  
 
 
-### First part. Infinite well 
- The first potential is the particle in a box scenario in which $V(x) = 0$. The program will construct the hamiltonian then calculate 
- the eigenvalues and eigenvectors(as well as making sure the eigenvalues are in ascending order). Then the program normalizes the eigenfunctions. 
- Then returns the 3 lowest energies and eigenfunctions. 
- 
- The particle in a box scenario is a very well understood problem and is a common homework problem for any physics undergrad in a quantum 
- mechanics course. These have analytical closed form solutions that we can compare to. In fact if we were to plot these eigenfunctions we expect 
- sines and cosines. And we can compare the eigenvalues using this analytical formula: $E_i = \frac{i^2 ℏ^2 π^2}{8mL^2}$. 
- 
- Our numerical solutions may not exactly match which is fine. We have a second order derivative with only a first order approximation after all. The  program will print the 3 lowest analytical and numerical energies on the screen then write in a file the three normalized probability densities and the sampled points. 
- 
+### First part. Problem setup
+ We know how to solve the Schrodinger equation in 1D. The problem now is to extend it to 2D. Lets first look at the eigenvectors $ψ$. 
+ In 1 dimension $ψ$ looks like this: 
  ### Second part. Harmonic Oscillator 
  The next part does the same thing but with the quantum harmonic oscillator where $V(x) = \frac{ℏ^2 x^2}{2m}$. This is also a well understood problem with 
  an analytical solution(granted it's a little harder). The eigenfunctions here should look like Gaussians. We can compare the eigenvalues to the analytical 
