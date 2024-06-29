@@ -9,7 +9,8 @@
  
  We want to solve this for different potentials $V(x,y)$. The potentials will be infinite square well, harmonic oscillator, 
  a Gaussian-like potential and a hydrogen-like potential. The infinite square well has analytical solutions as well as the harmonic 
- oscillator and even hydrogen in 3 dimensions but for a Gaussian-like potential we must use numerical solutions. 
+ oscillator and even hydrogen in 3 dimensions but for a Gaussian-like potential we must use numerical solutions. The wavefunction is 
+ discretized on a grid from -L to L. 
  
 
 
@@ -89,30 +90,26 @@ $[\frac{-1}{2} D_{xx} ⊕ D_{yy} + m \Delta x^2]Ψ(x) =  m \Delta x^2 EΨ(x,y)$
 
 
  Next is the Gaussian-like potential: 
+ $V(x, y) = e^(-\frac{\frac{x^2}{L^2} + \frac{y^2}{L^2}}{0.2^2})$ 
  
  
- ### Third part. Woods Saxon 
- The last part of this program is the Woods Saxon potential $V(x)= \frac{-V_0}{1 + exp((|x|-R)/a)}$. The program will do the same thing as the previous 2, 
- but this time will also write the 3 lowest energies as a function of $R$ going from 2 to 10. 
+ ### User Input
+ When the program runs, it will ask you to input different quantities. The first one is which potential to run it for. 
+ I = Infinite square well, O = Harmonic Oscillator, H = Hydrogen-like potential, G = Gaussian-like potential. 
+
+ The next is the number of states to run it for. Note that the ground state is calculated so if you enter 3, it will calculate 
+ states 0-2. 
+
+ Next is the length and width of the grid L. The grid is defined from -L to L. 
+
+ Next is the number of discretized points between -L and L. 
  
- ### Jupyter Notebook 
- Once the program is finished we can head over to jupyter and there should be 4 different plots: 
- 1. The ground state normalized probability density for the 3 different problems
- 2.The 1st excited state normalized probability density for the 3 different problems
- 3.The 2nd excited state normalized probability density for the 3 different problems
- 4.The three lowest energies for the Woods-Saxon potential as a function of the radius 
+ ### Solving the Eigenvalue Problem 
+ After user input is calculated it will solve the eigenvalue problem. It uses eigsh from SciPy to do this which returns the amount of 
+ eigenvalues and eigenvectors corresponding to "states." The code is currently setup to calculate the "states" amount of lowest eigenvalues 
+ so that it gives eigenvalues from smallest to largest. SciPy is necessary here because it has ARPACK subroutines to handle large sparse matrices. 
  
- ### Compiling the program 
- It would be quite beneficial to you if you had a Linux system because it would enable you to use the makefile included. 
-If you don't then you'll need to adjust the source code itself to solve the eigenvalue problem.
-
-If this is the case then what you do is open a terminal, use the cd command to change to this directory. 
-
-Then type make. 
-
-You'll see some gfortran commands being executed. All of this has created an exectuable file called woods_saxon
-
-Then the program will ask for input. Traps have been set in case you accidentally enter invalid input. 
-
-Results will be displayed on screen and written into several files. Now you can head over to Jupyter Notebook 
-to analyze the results. 
+ ### Output
+ For the output, instead of the eigenvectors we are instead more concerned with the probability densities. It uses MatPlotLib 
+ in order to make contour plots of not only the potentials but also the probability densities. You should see windows open with these 
+ figures. You can track the program's progress in the console in which this is ran. 
